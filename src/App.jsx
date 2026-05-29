@@ -69,6 +69,14 @@ const App = () => {
         { label: "Landing Page", page: 'landingPage', ariaLabel: "Landing Page" }
       ]
     },
+    {
+      label: "Admin",
+      bgColor: "rgba(88,28,135,0.6)",
+      textColor: "#fff",
+      links: [
+        { label: "Masuk sebagai Admin", page: 'admin', ariaLabel: "Login Admin" }
+      ]
+    },
   ];
 
   return (
@@ -99,12 +107,14 @@ const App = () => {
               } else if (['companyProfile', 'tokoOnline', 'landingPage'].includes(link.page)) {
                 setService(link.page)
                 setPage('layanan')
+              } else if (link.page === 'admin') {
+                openLogin()
               } else {
                 setPage(link.page)
               }
             }}
           />
-          <HomeContent products={products} onAdminClick={openLogin} settings={settings} />
+          <HomeContent products={products} settings={settings} />
         </>
       )}
       {page === 'company' && (

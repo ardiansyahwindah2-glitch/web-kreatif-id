@@ -2,7 +2,7 @@ import { GoArrowUpRight, GoCheck, GoMail } from 'react-icons/go'
 import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 import { iconMap } from '../hooks/useProducts'
 
-export default function HomeContent({ products, onAdminClick, settings }) {
+export default function HomeContent({ products, settings }) {
   const wa = settings.whatsapp || '6281234567890'
   const ig = settings.instagram || 'webkreatifid'
   const tiktok = settings.tiktok || '@webkreatifid'
@@ -170,15 +170,9 @@ export default function HomeContent({ products, onAdminClick, settings }) {
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 mt-16 text-center space-y-3">
+      <div className="relative z-10 mt-16 text-center space-y-2">
         <p className="text-white/30 text-sm">{siteName}</p>
         <p className="text-white/20 text-xs">Jasa Pembuatan Website &copy; {new Date().getFullYear()}</p>
-        <button
-          onClick={onAdminClick}
-          className="text-white/10 hover:text-white/30 text-[11px] uppercase tracking-widest transition-all"
-        >
-          Masuk sebagai Admin
-        </button>
       </div>
     </div>
   )
