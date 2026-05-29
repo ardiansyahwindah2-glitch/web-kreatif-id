@@ -147,7 +147,7 @@ export default function HomeContent({ products, settings }) {
               </div>
               <a href={`https://tiktok.com/@${tiktok.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-white/50 text-xs hover:text-white/70 transition-all">Ikuti Kami →</a>
             </div>
-            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+            <a href={`mailto:${email}?subject=Halo%20${siteName}%20-%20Saya%20ingin%20bertanya&body=Halo%20tim%20${siteName}%2C%0A%0ASaya%20tertarik%20dengan%20jasa%20pembuatan%20website.%20Bisa%20dibantu%20informasi%20lebih%20lanjut%3F%0A%0ATerima%20kasih.`} className="block bg-white/5 rounded-2xl p-5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer no-underline">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center">
                   <GoMail className="text-lg text-blue-400" />
@@ -157,8 +157,8 @@ export default function HomeContent({ products, settings }) {
                   <p className="text-white/90 text-sm font-medium break-all">{email}</p>
                 </div>
               </div>
-              <a href={`mailto:${email}`} className="text-blue-400 text-xs hover:text-blue-300 transition-all">Kirim Email →</a>
-            </div>
+              <span className="text-blue-400 text-xs hover:text-blue-300 transition-all">Kirim Email →</span>
+            </a>
           </div>
 
           <div className="border-t border-white/10 pt-6">
@@ -170,9 +170,9 @@ export default function HomeContent({ products, settings }) {
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 mt-16 text-center space-y-2">
-        <p className="text-white/30 text-sm">{siteName}</p>
-        <p className="text-white/20 text-xs">Jasa Pembuatan Website &copy; {new Date().getFullYear()}</p>
+      <div className="relative z-10 mt-16 text-center space-y-2" style={{ color: '#fff' }}>
+        <p className="text-sm opacity-40">{siteName}</p>
+        <p className="text-xs opacity-30">Jasa Pembuatan Website &copy; {new Date().getFullYear()}</p>
       </div>
     </div>
   )
