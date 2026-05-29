@@ -60,7 +60,7 @@ export default function BgTechElements() {
       {icons.map(({ Icon, label }, i) => (
         <div
           key={label}
-          className="tech-float absolute text-white/30"
+          className="tech-float absolute text-white opacity-30"
           aria-hidden
         >
           <Icon className="w-8 h-8 md:w-10 md:h-10" />

@@ -21,7 +21,7 @@ export default function AboutMePage({ onBack }) {
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-white/40 hover:text-white/80 transition-colors mb-6"
+          className="flex items-center gap-2 text-white opacity-40 hover:opacity-80 transition-colors mb-6"
         >
           <GoArrowLeft className="text-lg" />
           <span className="text-sm">Kembali</span>
@@ -51,18 +51,18 @@ export default function AboutMePage({ onBack }) {
 
           {/* Text Section */}
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl font-bold text-white/90 mb-4 tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-white opacity-90 mb-4 tracking-tight">
               Tentang Saya
             </h1>
 
-            <p className="text-white/60 leading-relaxed text-sm md:text-base mb-6 max-w-2xl">
+            <p className="text-white opacity-60 leading-relaxed text-sm md:text-base mb-6 max-w-2xl">
               Pengembang web yang suka bikin website modern, responsif,
               interaktif, dan clean. Fokus di frontend development,
               animasi UI, dan pengalaman pengguna yang nyaman.
             </p>
 
             {/* Skills */}
-            <h2 className="text-lg md:text-xl font-semibold text-white/90 mb-4 tracking-tight">
+            <h2 className="text-lg md:text-xl font-semibold text-white opacity-90 mb-4 tracking-tight">
               Skills
             </h2>
 
@@ -70,7 +70,7 @@ export default function AboutMePage({ onBack }) {
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1.5 text-sm rounded-xl bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white/80 transition-all"
+                  className="px-3 py-1.5 text-sm rounded-xl bg-white/5 border border-white/10 text-white opacity-60 hover:bg-white/10 hover:opacity-80 transition-all"
                 >
                   {skill}
                 </span>

@@ -20,7 +20,7 @@ export default function HomeContent({ products, settings }) {
             Website
           </span>
         </h1>
-        <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+        <p className="text-lg md:text-xl max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" style={{ color: 'rgba(255,255,255,0.8)' }}>
           Website modern, responsif, dan interaktif untuk bisnis Anda. 
           Harga terjangkau dengan kualitas terbaik.
         </p>
@@ -45,19 +45,19 @@ export default function HomeContent({ products, settings }) {
                 </div>
               ) : null}
 
-              <h2 className="text-xl font-bold text-white/90 mb-2">{product.title}</h2>
-              <p className="text-white/70 text-sm mb-4">{product.desc}</p>
+              <h2 className="text-xl font-bold text-white opacity-90 mb-2">{product.title}</h2>
+              <p className="text-white opacity-70 text-sm mb-4">{product.desc}</p>
 
-              <div className="text-2xl font-bold text-white/90 mb-4">
+              <div className="text-2xl font-bold text-white opacity-90 mb-4">
                 {product.price}
-                <span className="text-sm font-normal text-white/60 ml-1">/paket</span>
+                <span className="text-sm font-normal text-white opacity-60 ml-1">/paket</span>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {product.specs.map((spec) => (
                   <span
                     key={spec}
-                    className="px-3 py-1 text-xs rounded-full bg-white/10 border border-white/20 text-white/70"
+                    className="px-3 py-1 text-xs rounded-full bg-white/10 border border-white/20 text-white opacity-70"
                   >
                     {spec}
                   </span>
@@ -65,10 +65,10 @@ export default function HomeContent({ products, settings }) {
               </div>
 
               <div className="flex-1">
-                <h3 className="text-sm font-semibold text-white/80 mb-3 uppercase tracking-wider">Fitur</h3>
+                <h3 className="text-sm font-semibold text-white opacity-80 mb-3 uppercase tracking-wider">Fitur</h3>
                 <ul className="space-y-2">
                   {product.fitur.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-white/70">
+                    <li key={f} className="flex items-start gap-2 text-sm text-white opacity-70">
                       <GoCheck className="mt-0.5 text-purple-400 shrink-0" />
                       {f}
                     </li>
@@ -91,88 +91,94 @@ export default function HomeContent({ products, settings }) {
       </div>
 
       {/* Stats */}
-      <div className="relative z-10 mt-16 flex flex-wrap justify-center gap-8 text-white/60 text-sm">
-        <span className="text-white/80 font-medium">50+ Proyek Selesai</span>
-        <span className="text-white/20">|</span>
-        <span className="text-white/80 font-medium">30+ Klien Puas</span>
-        <span className="text-white/20">|</span>
-        <span className="text-white/80 font-medium">Garansi Revisi</span>
-        <span className="text-white/20">|</span>
-        <span className="text-white/80 font-medium">Dukungan 24/7</span>
+      <div className="relative z-10 mt-16 w-full max-w-3xl bg-white/90 backdrop-blur-2xl rounded-3xl p-6 shadow-xl border border-gray-200">
+        <div className="flex flex-wrap justify-center gap-8 text-sm font-medium text-gray-900">
+          <span>50+ Proyek Selesai</span>
+          <span className="opacity-30">|</span>
+          <span>30+ Klien Puas</span>
+          <span className="opacity-30">|</span>
+          <span>Garansi Revisi</span>
+          <span className="opacity-30">|</span>
+          <span>Dukungan 24/7</span>
+        </div>
       </div>
 
       {/* Contact Section */}
       <div className="relative z-10 mt-20 w-full max-w-3xl">
-        <div className="bg-black/50 backdrop-blur-2xl rounded-3xl p-10 md:p-14 border border-white/10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Hubungi Kami</h2>
-          <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+        <div className="bg-white/90 backdrop-blur-2xl rounded-3xl p-10 md:p-14 border border-gray-200 shadow-xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
+          <p className="text-gray-600 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
             Kami siap membantu mewujudkan website impian Anda. 
             Konsultasi gratis tanpa biaya. Tim kami akan merespon dalam 1x24 jam.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-xl mx-auto mb-10">
-            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+            <div className="bg-gray-100/80 rounded-2xl p-5 border border-gray-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-green-600/20 flex items-center justify-center">
-                  <FaWhatsapp className="text-lg text-green-400" />
+                <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                  <FaWhatsapp className="text-lg text-green-600" />
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs uppercase tracking-wider">WhatsApp</p>
-                  <p className="text-white/90 text-sm font-medium">{wa}</p>
+                  <p className="text-gray-400 text-xs uppercase tracking-wider">WhatsApp</p>
+                  <p className="text-gray-900 text-sm font-medium">{wa}</p>
                 </div>
               </div>
-              <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer" className="text-green-400 text-xs hover:text-green-300 transition-all">Chat Sekarang →</a>
+              <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer" className="text-green-600 text-xs hover:text-green-700 transition-all">Chat Sekarang →</a>
             </div>
-            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+            <div className="bg-gray-100/80 rounded-2xl p-5 border border-gray-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-pink-600/20 flex items-center justify-center">
-                  <FaInstagram className="text-lg text-pink-400" />
+                <div className="w-10 h-10 rounded-xl bg-pink-100 flex items-center justify-center">
+                  <FaInstagram className="text-lg text-pink-600" />
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs uppercase tracking-wider">Instagram</p>
-                  <p className="text-white/90 text-sm font-medium">@{ig.replace('@', '')}</p>
+                  <p className="text-gray-400 text-xs uppercase tracking-wider">Instagram</p>
+                  <p className="text-gray-900 text-sm font-medium">@{ig.replace('@', '')}</p>
                 </div>
               </div>
-              <a href={`https://instagram.com/${ig.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-pink-400 text-xs hover:text-pink-300 transition-all">Ikuti Kami →</a>
+              <a href={`https://instagram.com/${ig.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-pink-600 text-xs hover:text-pink-700 transition-all">Ikuti Kami →</a>
             </div>
-            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+            <div className="bg-gray-100/80 rounded-2xl p-5 border border-gray-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <FaTiktok className="text-lg text-white/70" />
+                <div className="w-10 h-10 rounded-xl bg-gray-200 flex items-center justify-center">
+                  <FaTiktok className="text-lg text-gray-700" />
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs uppercase tracking-wider">TikTok</p>
-                  <p className="text-white/90 text-sm font-medium">@{tiktok.replace('@', '')}</p>
+                  <p className="text-gray-400 text-xs uppercase tracking-wider">TikTok</p>
+                  <p className="text-gray-900 text-sm font-medium">@{tiktok.replace('@', '')}</p>
                 </div>
               </div>
-              <a href={`https://tiktok.com/@${tiktok.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-white/50 text-xs hover:text-white/70 transition-all">Ikuti Kami →</a>
+              <a href={`https://tiktok.com/@${tiktok.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-gray-500 text-xs hover:text-gray-700 transition-all">Ikuti Kami →</a>
             </div>
-            <a href={`mailto:${email}?subject=Halo%20${siteName}%20-%20Saya%20ingin%20bertanya&body=Halo%20tim%20${siteName}%2C%0A%0ASaya%20tertarik%20dengan%20jasa%20pembuatan%20website.%20Bisa%20dibantu%20informasi%20lebih%20lanjut%3F%0A%0ATerima%20kasih.`} className="block bg-white/5 rounded-2xl p-5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer no-underline">
+            <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(`Halo ${siteName} - Saya ingin bertanya`)}&body=${encodeURIComponent(`Halo tim ${siteName},
+
+Saya tertarik dengan jasa pembuatan website. Bisa dibantu informasi lebih lanjut?
+
+Terima kasih.`)}`} className="block bg-gray-100/80 rounded-2xl p-5 border border-gray-200 hover:bg-gray-200/80 transition-all cursor-pointer no-underline">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center">
-                  <GoMail className="text-lg text-blue-400" />
+                <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                  <GoMail className="text-lg text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-white/40 text-xs uppercase tracking-wider">Email</p>
-                  <p className="text-white/90 text-sm font-medium break-all">{email}</p>
+                  <p className="text-gray-400 text-xs uppercase tracking-wider">Email</p>
+                  <p className="text-gray-900 text-sm font-medium break-all">{email}</p>
                 </div>
               </div>
-              <span className="text-blue-400 text-xs hover:text-blue-300 transition-all">Kirim Email →</span>
+              <span className="text-blue-600 text-xs hover:text-blue-700 transition-all">Kirim Email →</span>
             </a>
           </div>
 
-          <div className="border-t border-white/10 pt-6">
-            <p className="text-white/40 text-xs uppercase tracking-wider mb-3">Jam Operasional</p>
-            <p className="text-white/70 text-sm">Senin - Jumat, 09:00 - 18:00 WIB</p>
-            <p className="text-white/50 text-xs mt-1">Sabtu & Minggu: Konsultasi via WhatsApp</p>
+          <div className="border-t border-gray-200 pt-6">
+            <p className="text-gray-400 text-xs uppercase tracking-wider mb-3">Jam Operasional</p>
+            <p className="text-gray-700 text-sm">Senin - Jumat, 09:00 - 18:00 WIB</p>
+            <p className="text-gray-500 text-xs mt-1">Sabtu & Minggu: Konsultasi via WhatsApp</p>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 mt-16 text-center space-y-2" style={{ color: '#fff' }}>
-        <p className="text-sm opacity-40">{siteName}</p>
-        <p className="text-xs opacity-30">Jasa Pembuatan Website &copy; {new Date().getFullYear()}</p>
+      <div className="relative z-10 mt-16 text-center space-y-2 bg-white/90 backdrop-blur-2xl rounded-3xl p-6 border border-gray-200 shadow-xl">
+        <p className="text-sm font-medium text-gray-700">{siteName}</p>
+        <p className="text-xs text-gray-500">Jasa Pembuatan Website &copy; {new Date().getFullYear()}</p>
       </div>
     </div>
   )

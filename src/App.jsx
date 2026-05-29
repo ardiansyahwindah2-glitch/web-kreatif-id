@@ -17,7 +17,7 @@ const App = () => {
   const [page, setPage] = useState('home')
   const [service, setService] = useState(null)
   const { products, addProduct, updateProduct, deleteProduct } = useProducts()
-  const { settings } = useSettings()
+  const { settings, updateSetting } = useSettings()
 
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('manage_auth') === 'true')
   const [showLogin, setShowLogin] = useState(false)
@@ -132,6 +132,8 @@ const App = () => {
           addProduct={addProduct}
           updateProduct={updateProduct}
           deleteProduct={deleteProduct}
+          settings={settings}
+          updateSetting={updateSetting}
           onBack={() => setPage('home')}
         />
       )}
@@ -148,18 +150,18 @@ const App = () => {
                 <GoShieldLock className="text-2xl text-white" />
               </div>
             </div>
-            <h2 className="text-xl font-bold text-white/90 text-center mb-2">Masuk sebagai Admin</h2>
-            <p className="text-white/40 text-sm text-center mb-6">Masukkan password untuk mengakses dashboard</p>
+            <h2 className="text-xl font-bold text-white opacity-90 text-center mb-2">Masuk sebagai Admin</h2>
+            <p className="text-white opacity-40 text-sm text-center mb-6">Masukkan password untuk mengakses dashboard</p>
 
             <div className="space-y-4">
               <div>
-                <label className="text-sm text-white/60 block mb-1.5">Password</label>
+                <label className="text-sm text-white opacity-60 block mb-1.5">Password</label>
                 <input
                   type="password"
                   value={loginPwd}
                   onChange={(e) => { setLoginPwd(e.target.value); setLoginError('') }}
                   onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-                  className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/10 text-white/80 text-sm focus:outline-none focus:border-purple-500/50 transition-all"
+                  className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/10 text-white opacity-80 text-sm focus:outline-none focus:border-purple-500/50 transition-all"
                   placeholder="••••••••"
                   autoFocus
                 />
@@ -177,7 +179,7 @@ const App = () => {
 
             <button
               onClick={() => setShowLogin(false)}
-              className="absolute top-4 right-4 text-white/30 hover:text-white/70"
+              className="absolute top-4 right-4 text-white opacity-30 hover:opacity-70"
             >
               <GoX className="text-xl" />
             </button>

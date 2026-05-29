@@ -35,17 +35,17 @@ export default function LayananPage({ service, onBack }) {
       <div className="w-full max-w-3xl bg-black/60 backdrop-blur-2xl rounded-3xl p-10 md:p-14 shadow-[0_0_60px_rgba(0,0,0,0.5)] border border-white/10">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-white/40 hover:text-white/80 transition-colors mb-8"
+          className="flex items-center gap-2 text-white opacity-40 hover:opacity-80 transition-colors mb-8"
         >
           <GoArrowLeft className="text-lg" />
           <span className="text-sm">Kembali</span>
         </button>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-white/90 mb-6 tracking-tight">
+        <h1 className="text-3xl md:text-4xl font-bold text-white opacity-90 mb-6 tracking-tight">
           {data.title}
         </h1>
 
-        <div className="space-y-5 text-white/60 leading-relaxed text-base md:text-lg">
+        <div className="space-y-5 text-white opacity-60 leading-relaxed text-base md:text-lg">
           {data.body.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
