@@ -1,4 +1,4 @@
-import { GoArrowUpRight, GoCheck, GoMail, GoCommentDiscussion, GoHeart, GoGlobe } from 'react-icons/go'
+import { GoArrowUpRight, GoCheck, GoMail } from 'react-icons/go'
 import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 import { iconMap } from '../hooks/useProducts'
 
@@ -102,52 +102,77 @@ export default function HomeContent({ products, onAdminClick, settings }) {
       </div>
 
       {/* Contact Section */}
-      <div className="relative z-10 mt-20 w-full max-w-2xl">
-        <div className="bg-black/50 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">Hubungi Kami</h2>
-          <p className="text-white/50 text-sm mb-6">Ada pertanyaan? Tim kami siap membantu.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href={`https://wa.me/${wa}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-green-600/20 border border-green-500/30 text-green-400 text-sm font-medium hover:bg-green-600/30 transition-all"
-            >
-              <FaWhatsapp className="text-lg" />
-              WhatsApp
-            </a>
-            <a
-              href={`https://instagram.com/${ig.replace('@', '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-600/20 border border-pink-500/30 text-pink-400 text-sm font-medium hover:bg-pink-600/30 transition-all"
-            >
-              <FaInstagram className="text-lg" />
-              Instagram
-            </a>
-            <a
-              href={`https://tiktok.com/@${tiktok.replace('@', '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white/70 text-sm font-medium hover:bg-white/15 transition-all"
-            >
-              <FaTiktok className="text-lg" />
-              TikTok
-            </a>
-            <a
-              href={`mailto:${email}`}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 text-sm font-medium hover:bg-blue-600/30 transition-all"
-            >
-              <GoMail className="text-lg" />
-              Email
-            </a>
+      <div className="relative z-10 mt-20 w-full max-w-3xl">
+        <div className="bg-black/50 backdrop-blur-2xl rounded-3xl p-10 md:p-14 border border-white/10 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Hubungi Kami</h2>
+          <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+            Kami siap membantu mewujudkan website impian Anda. 
+            Konsultasi gratis tanpa biaya. Tim kami akan merespon dalam 1x24 jam.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-xl mx-auto mb-10">
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-green-600/20 flex items-center justify-center">
+                  <FaWhatsapp className="text-lg text-green-400" />
+                </div>
+                <div>
+                  <p className="text-white/40 text-xs uppercase tracking-wider">WhatsApp</p>
+                  <p className="text-white/90 text-sm font-medium">{wa}</p>
+                </div>
+              </div>
+              <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer" className="text-green-400 text-xs hover:text-green-300 transition-all">Chat Sekarang →</a>
+            </div>
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-pink-600/20 flex items-center justify-center">
+                  <FaInstagram className="text-lg text-pink-400" />
+                </div>
+                <div>
+                  <p className="text-white/40 text-xs uppercase tracking-wider">Instagram</p>
+                  <p className="text-white/90 text-sm font-medium">@{ig.replace('@', '')}</p>
+                </div>
+              </div>
+              <a href={`https://instagram.com/${ig.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-pink-400 text-xs hover:text-pink-300 transition-all">Ikuti Kami →</a>
+            </div>
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                  <FaTiktok className="text-lg text-white/70" />
+                </div>
+                <div>
+                  <p className="text-white/40 text-xs uppercase tracking-wider">TikTok</p>
+                  <p className="text-white/90 text-sm font-medium">@{tiktok.replace('@', '')}</p>
+                </div>
+              </div>
+              <a href={`https://tiktok.com/@${tiktok.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-white/50 text-xs hover:text-white/70 transition-all">Ikuti Kami →</a>
+            </div>
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center">
+                  <GoMail className="text-lg text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-white/40 text-xs uppercase tracking-wider">Email</p>
+                  <p className="text-white/90 text-sm font-medium break-all">{email}</p>
+                </div>
+              </div>
+              <a href={`mailto:${email}`} className="text-blue-400 text-xs hover:text-blue-300 transition-all">Kirim Email →</a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-6">
+            <p className="text-white/40 text-xs uppercase tracking-wider mb-3">Jam Operasional</p>
+            <p className="text-white/70 text-sm">Senin - Jumat, 09:00 - 18:00 WIB</p>
+            <p className="text-white/50 text-xs mt-1">Sabtu & Minggu: Konsultasi via WhatsApp</p>
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="relative z-10 mt-16 text-center space-y-3">
-        <p className="text-white/20 text-xs">{siteName} &copy; {new Date().getFullYear()}</p>
+        <p className="text-white/30 text-sm">{siteName}</p>
+        <p className="text-white/20 text-xs">Jasa Pembuatan Website &copy; {new Date().getFullYear()}</p>
         <button
           onClick={onAdminClick}
           className="text-white/10 hover:text-white/30 text-[11px] uppercase tracking-widest transition-all"
