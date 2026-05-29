@@ -1,19 +1,32 @@
-import { GoArrowUpRight, GoCheck } from 'react-icons/go'
+import { GoArrowUpRight, GoCheck, GoMail, GoCommentDiscussion, GoHeart, GoGlobe } from 'react-icons/go'
+import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 import { iconMap } from '../hooks/useProducts'
 
-export default function HomeContent({ products, onAdminClick }) {
+export default function HomeContent({ products, onAdminClick, settings }) {
+  const wa = settings.whatsapp || '6281234567890'
+  const ig = settings.instagram || 'webkreatifid'
+  const tiktok = settings.tiktok || '@webkreatifid'
+  const email = settings.email || 'hello@webkreatifid.com'
+  const siteName = settings.siteName || 'WebKreatifID'
+
   return (
     <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-24">
-      <div className="relative z-10 text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-bold text-white/90 mb-4 tracking-tight">
-          Jasa Pembuatan <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Website</span>
+      {/* Hero */}
+      <div className="relative z-10 text-center mb-20">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-600/20 via-pink-600/10 to-purple-600/20 blur-3xl rounded-full w-[200%] h-[200%] -top-1/2 -left-1/2" />
+        <h1 className="text-4xl md:text-7xl font-bold text-white mb-4 tracking-tight leading-tight drop-shadow-[0_2px_20px_rgba(168,85,247,0.3)]">
+          Jasa Pembuatan <br className="md:hidden" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]">
+            Website
+          </span>
         </h1>
-        <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
+        <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
           Website modern, responsif, dan interaktif untuk bisnis Anda. 
           Harga terjangkau dengan kualitas terbaik.
         </p>
       </div>
 
+      {/* Products */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
         {products.map((product) => {
           const Icon = iconMap[product.icon]
@@ -64,7 +77,7 @@ export default function HomeContent({ products, onAdminClick }) {
               </div>
 
               <a
-                href="https://wa.me/6281234567890"
+                href={`https://wa.me/${wa}?text=Halo%20${siteName}%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(product.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold text-sm flex items-center justify-center gap-2 hover:from-purple-500 hover:to-pink-500 transition-all duration-300"
@@ -77,21 +90,67 @@ export default function HomeContent({ products, onAdminClick }) {
         })}
       </div>
 
-      <div className="relative z-10 mt-16 flex flex-wrap justify-center gap-8 text-black/40 text-sm">
-        <span className="text-black/60 font-medium">50+ Proyek Selesai</span>
-        <span className="text-black/20">|</span>
-        <span className="text-black/60 font-medium">30+ Klien Puas</span>
-        <span className="text-black/20">|</span>
-        <span className="text-black/60 font-medium">Garansi Revisi</span>
-        <span className="text-black/20">|</span>
-        <span className="text-black/60 font-medium">Dukungan 24/7</span>
+      {/* Stats */}
+      <div className="relative z-10 mt-16 flex flex-wrap justify-center gap-8 text-white/60 text-sm">
+        <span className="text-white/80 font-medium">50+ Proyek Selesai</span>
+        <span className="text-white/20">|</span>
+        <span className="text-white/80 font-medium">30+ Klien Puas</span>
+        <span className="text-white/20">|</span>
+        <span className="text-white/80 font-medium">Garansi Revisi</span>
+        <span className="text-white/20">|</span>
+        <span className="text-white/80 font-medium">Dukungan 24/7</span>
       </div>
 
-      {/* Admin footer */}
-      <div className="relative z-10 mt-12 text-center">
+      {/* Contact Section */}
+      <div className="relative z-10 mt-20 w-full max-w-2xl">
+        <div className="bg-black/50 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 text-center">
+          <h2 className="text-2xl font-bold text-white mb-2">Hubungi Kami</h2>
+          <p className="text-white/50 text-sm mb-6">Ada pertanyaan? Tim kami siap membantu.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href={`https://wa.me/${wa}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-green-600/20 border border-green-500/30 text-green-400 text-sm font-medium hover:bg-green-600/30 transition-all"
+            >
+              <FaWhatsapp className="text-lg" />
+              WhatsApp
+            </a>
+            <a
+              href={`https://instagram.com/${ig.replace('@', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-pink-600/20 border border-pink-500/30 text-pink-400 text-sm font-medium hover:bg-pink-600/30 transition-all"
+            >
+              <FaInstagram className="text-lg" />
+              Instagram
+            </a>
+            <a
+              href={`https://tiktok.com/@${tiktok.replace('@', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white/70 text-sm font-medium hover:bg-white/15 transition-all"
+            >
+              <FaTiktok className="text-lg" />
+              TikTok
+            </a>
+            <a
+              href={`mailto:${email}`}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 text-sm font-medium hover:bg-blue-600/30 transition-all"
+            >
+              <GoMail className="text-lg" />
+              Email
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="relative z-10 mt-16 text-center space-y-3">
+        <p className="text-white/20 text-xs">{siteName} &copy; {new Date().getFullYear()}</p>
         <button
           onClick={onAdminClick}
-          className="text-black/20 hover:text-black/40 text-[11px] uppercase tracking-widest transition-all"
+          className="text-white/10 hover:text-white/30 text-[11px] uppercase tracking-widest transition-all"
         >
           Masuk sebagai Admin
         </button>

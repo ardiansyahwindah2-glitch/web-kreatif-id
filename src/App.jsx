@@ -10,12 +10,14 @@ import SoftAurora from './components/SoftAurora'
 import BgGridPattern from './components/BgGridPattern'
 import HomeContent from './components/HomeContent'
 import useProducts from './hooks/useProducts'
+import useSettings from './hooks/useSettings'
 import logo from './logo.svg'
 
 const App = () => {
   const [page, setPage] = useState('home')
   const [service, setService] = useState(null)
   const { products, addProduct, updateProduct, deleteProduct } = useProducts()
+  const { settings } = useSettings()
 
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('manage_auth') === 'true')
   const [showLogin, setShowLogin] = useState(false)
@@ -102,7 +104,7 @@ const App = () => {
               }
             }}
           />
-          <HomeContent products={products} onAdminClick={openLogin} />
+          <HomeContent products={products} onAdminClick={openLogin} settings={settings} />
         </>
       )}
       {page === 'company' && (

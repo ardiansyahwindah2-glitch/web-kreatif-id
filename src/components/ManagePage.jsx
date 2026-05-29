@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { GoHome, GoPackage, GoSignOut, GoTrash, GoPencil, GoPlus, GoX, GoCheck, GoDeviceDesktop, GoCreditCard, GoFileCode, GoNote, GoBriefcase, GoMortarBoard, GoLink, GoPerson, GoDatabase, GoMegaphone, GoGraph, GoCalendar, GoGear } from 'react-icons/go'
 import { iconMap } from '../hooks/useProducts'
 import useFinance, { paymentMethods, categories } from '../hooks/useFinance'
@@ -26,6 +26,8 @@ export default function ManagePage({ products, addProduct, updateProduct, delete
   const { entries, addEntry, deleteEntry, totalPemasukan, totalPengeluaran, labaBersih, byMonth } = useFinance()
   const { settings, updateSetting } = useSettings()
 
+  const [settingsForm, setSettingsForm] = useState({ ...settings })
+  const [settingsSaved, setSettingsSaved] = useState(false)
   const [showFinanceForm, setShowFinanceForm] = useState(false)
   const [financeForm, setFinanceForm] = useState({ type: 'masuk', amount: '', desc: '', method: 'Tunai', category: 'Pembuatan Website', date: new Date().toISOString().slice(0, 10) })
 
@@ -82,6 +84,16 @@ export default function ManagePage({ products, addProduct, updateProduct, delete
     sessionStorage.removeItem('manage_auth')
     onBack()
   }
+
+  const handleSaveSettings = () => {
+    Object.entries(settingsForm).forEach(([key, value]) => updateSetting(key, value))
+    setSettingsSaved(true)
+    setTimeout(() => setSettingsSaved(false), 2000)
+  }
+
+  useEffect(() => {
+    setSettingsForm({ ...settings })
+  }, [settings])
 
   const formatRp = (n) => `Rp ${Number(n).toLocaleString('id-ID')}`
 
@@ -344,26 +356,31 @@ export default function ManagePage({ products, addProduct, updateProduct, delete
               <div className="bg-black/50 backdrop-blur-xl rounded-2xl p-6 border border-white/10 space-y-5">
                 <div>
                   <label className="text-sm text-white/80 block mb-1.5">Nama Website</label>
-                  <input value={settings.siteName} onChange={e => updateSetting('siteName', e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
+                  <input value={settingsForm.siteName} onChange={e => setSettingsForm(prev => ({ ...prev, siteName: e.target.value }))} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
                 </div>
                 <div>
                   <label className="text-sm text-white/80 block mb-1.5">Email</label>
-                  <input value={settings.email} onChange={e => updateSetting('email', e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
+                  <input value={settingsForm.email} onChange={e => setSettingsForm(prev => ({ ...prev, email: e.target.value }))} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
                 </div>
                 <div>
                   <label className="text-sm text-white/80 block mb-1.5">WhatsApp (nomor)</label>
-                  <input value={settings.whatsapp} onChange={e => updateSetting('whatsapp', e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" placeholder="62812xxxxxx" />
+                  <input value={settingsForm.whatsapp} onChange={e => setSettingsForm(prev => ({ ...prev, whatsapp: e.target.value }))} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" placeholder="62812xxxxxx" />
                 </div>
                 <div>
                   <label className="text-sm text-white/80 block mb-1.5">Instagram (username)</label>
-                  <input value={settings.instagram} onChange={e => updateSetting('instagram', e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
+                  <input value={settingsForm.instagram} onChange={e => setSettingsForm(prev => ({ ...prev, instagram: e.target.value }))} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
                 </div>
                 <div>
                   <label className="text-sm text-white/80 block mb-1.5">TikTok</label>
-                  <input value={settings.tiktok} onChange={e => updateSetting('tiktok', e.target.value)} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
+                  <input value={settingsForm.tiktok} onChange={e => setSettingsForm(prev => ({ ...prev, tiktok: e.target.value }))} className="w-full px-4 py-2.5 rounded-xl bg-white/15 border border-white/20 text-white text-sm focus:outline-none focus:border-purple-500/50" />
                 </div>
+                <button
+                  onClick={handleSaveSettings}
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-semibold hover:from-purple-500 hover:to-pink-500 transition-all flex items-center justify-center gap-2"
+                >
+                  {settingsSaved ? <><GoCheck /> Tersimpan!</> : 'Simpan Pengaturan'}
+                </button>
               </div>
-              <p className="text-white/30 text-xs mt-3">Data tersimpan otomatis di localStorage.</p>
             </div>
           </div>
         )}
